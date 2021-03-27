@@ -1,0 +1,6 @@
+azure.keyvault:
+  enabled: ${azure.configserver-enabled:false}
+  uri: ${azure.configserver-uri:dummyuri}
+  client-id: ${azure.configserver-client-id:dummyclientid}
+  client-key: ${azure.configserver-client-key:dummykey}
+  token-acquire-timeout-seconds: ${azure.configserver-token-acquire-timeout-seconds:60}

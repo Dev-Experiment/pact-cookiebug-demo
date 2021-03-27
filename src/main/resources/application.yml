@@ -1,0 +1,23 @@
+spring:
+  main.allow-bean-definition-overriding: true
+  http:
+    log-request-details: true
+  mvc:
+    log-request-details: true
+  application:
+    name: rest
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=test
+    username: ${FCS_VTRP_DB_USERNAME:failingToReadNotiDBUSERFromConfigServer}
+    password: ${FCS_VTRP_DB_PASSWORD:failingToReadNotiDBPASSFromConfigServer}
+    minPoolSize: 20
+    maxPoolSize: 200
+    maxWaitTime: 11000
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+  autoconfigure:
+    exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    exclude[1]: org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+

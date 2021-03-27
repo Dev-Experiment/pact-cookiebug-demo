@@ -1,0 +1,53 @@
+{
+  "provider": {
+    "name": "greeting"
+  },
+  "consumer": {
+    "name": "greeting"
+  },
+  "interactions": [
+    {
+      "description": "GET REQUEST",
+
+      "request": {
+        "method": "GET",
+        "path": "/greeting/be23e30c-d2d4-c369-d4be-b538a5fbbb6d",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Cookie": "token=token"
+        },
+        "query": {
+          "endTime": [
+            "2019-08-31T15:49:05.630Z"
+          ],
+          "startTime": [
+            "2019-08-31T15:49:05.630Z"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 0,
+          "content": "token"
+        }
+      },
+      "providerStates": [
+        {
+          "name": "test GET"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.0"
+    }
+  }
+}
