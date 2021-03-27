@@ -23,7 +23,7 @@ class GreetingController {
         @PathVariable vehicleUuid: UUID,
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) startTime: OffsetDateTime,
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) endTime: OffsetDateTime,
-        //@RequestHeader("Cookie") token: String
+        //@RequestHeader("Cookie") token: String //Uncomment this and comment the next line for testing this annotation vs @CookieValue
         @CookieValue("token") token: String
         ) : Greeting?
         {

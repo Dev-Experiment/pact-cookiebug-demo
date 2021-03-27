@@ -8,8 +8,10 @@ import au.com.dius.pact.provider.junitsupport.Provider
 import au.com.dius.pact.provider.junitsupport.State
 import au.com.dius.pact.provider.junitsupport.loader.PactFolder
 import au.com.dius.pact.provider.spring.junit5.MockMvcTestTarget
+import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider
 import com.appu.springrest.controller.GreetingController
 import com.appu.springrest.service.GreetingService
+import org.apache.http.HttpRequest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.TestTemplate
@@ -41,10 +43,19 @@ internal class GreetingProviderPactSpringJunit5MockMVCTest {
     private lateinit var service:GreetingService
 
     @TestTemplate
-    @ExtendWith(PactVerificationInvocationContextProvider::class)
+    @ExtendWith(PactVerificationSpringProvider::class)
     fun pactVerificationTestTemplate(context: PactVerificationContext) {
         context.verifyInteraction()
     }
+
+    /*
+    //Uncomment to debug Error: "ParameterResolver registered for parameter [org.apache.http.HttpRequest request] in method"
+    @TestTemplate
+    @ExtendWith(PactVerificationInvocationContextProvider::class)
+    fun pactVerificationTestTemplate(context: PactVerificationContext, request: HttpRequest) {
+        request.addHeader("Cookie", "token=token")
+        context.verifyInteraction()
+    }*/
 
     @Autowired
     private val mockMvc: MockMvc? = null
@@ -55,8 +66,6 @@ internal class GreetingProviderPactSpringJunit5MockMVCTest {
     @BeforeEach
     fun before(context: PactVerificationContext) {
         val testTarget = MockMvcTestTarget(mockMvc)
-        //testTarget.setControllers(GreetingController())
-
         testTarget.printRequestResponse=true
         context.target = testTarget
     }
